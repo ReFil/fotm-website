@@ -27,6 +27,11 @@ body {
     text-align: center;
 }
 
+h1 {
+    font-size: 40pt;
+    margin: 0;
+}
+
 h1,
 h2,
 h3,
@@ -34,6 +39,14 @@ h4,
 h5,
 h6 {
     font-family: "OCR-A", monospace;
+}
+
+.titlebar {
+    margin: 20px;
+    padding: 20px;
+    background: linear-gradient(90deg, rgba(9, 3, 54, 0.675) 0%, rgb(47, 25, 69) 50%, rgba(9, 3, 54, 0.675) 100%);
+
+    border-radius: 10px;
 }
 
 .links {
