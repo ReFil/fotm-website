@@ -1,5 +1,27 @@
+@font-face {
+    font-family: "OCR-A"; /*a name to be used later*/
+    src: url("./OCR-A\ Regular.ttf"); /*URL to font*/
+}
+@font-face {
+    font-family: "OCR_B"; /*a name to be used later*/
+    src: url("OCR-B.ttf"); /*URL to font*/
+}
+
 table,
 th,
 td {
     border: 1px solid black;
+}
+
+body {
+    font-family: "OCR-B", monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "OCR-A", monospace;
 }
