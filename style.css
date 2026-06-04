@@ -1,10 +1,11 @@
 @font-face {
-    font-family: "OCR-A"; /*a name to be used later*/
-    src: url("./OCR-A\ Regular.ttf"); /*URL to font*/
+    font-family: "OCR-A";
+    src: url("./assets/fonts/ocr-a.ttf");
 }
+
 @font-face {
-    font-family: "OCR_B"; /*a name to be used later*/
-    src: url("OCR-B.ttf"); /*URL to font*/
+    font-family: "OCR_B";
+    src: url("./assets/fonts/ocr-b.ttf");
 }
 
 table,
