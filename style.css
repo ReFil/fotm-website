@@ -58,11 +58,14 @@ h6 {
 
 .person h3 {
     font-style: italic;
-    font-size: 20pt;
+    font-size: 25pt;
+    margin: 0;
 }
 
 .person {
-    background-color: red;
+    background-color: var(--ourple-clear);
+    padding: 15px;
+    border: solid white 1px;
 }
 
 .titlebar {
