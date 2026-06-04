@@ -58,7 +58,7 @@ h6 {
 
 .person h3 {
     font-style: italic;
-    font-size: 25pt;
+    font-size: 20pt;
     margin: 0;
 }
 
@@ -66,6 +66,10 @@ h6 {
     background-color: var(--ourple-clear);
     padding: 15px;
     border: solid white 1px;
+}
+
+.person img {
+    image-rendering: pixelated;
 }
 
 .titlebar {
