@@ -8,6 +8,13 @@
     src: url("./assets/fonts/ocr-b.ttf");
 }
 
+:root {
+    --ourple: #2f1945;
+    --ourple-clear: #2f194596;
+    --blue-passport: #090336ac;
+    --ourple-gradient: linear-gradient(90deg, var(--blue-passport) 0%, var(--ourple) 50%, var(--blue-passport) 100%);
+}
+
 table {
     vertical-align: middle;
     display: inline-block;
@@ -44,8 +51,18 @@ h6 {
 .titlebar {
     margin: 20px;
     padding: 20px;
-    background: linear-gradient(90deg, rgba(9, 3, 54, 0.675) 0%, rgb(47, 25, 69) 50%, rgba(9, 3, 54, 0.675) 100%);
+    background: var(--ourple-gradient);
 
+    border-radius: 10px;
+}
+
+.content {
+    background: var(--ourple-clear);
+    margin: auto;
+    padding: 10px 50px 10px 50px;
+    min-width: 500px;
+    max-width: 1000px;
+    height: fit-content;
     border-radius: 10px;
 }
 
