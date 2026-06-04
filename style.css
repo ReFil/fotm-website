@@ -104,3 +104,11 @@ h6 {
     display: inline-block;
     margin-right: 15px;
 }
+
+.badge-grid {
+    display: block;
+}
+
+.badge-grid a {
+    text-decoration: none;
+}
