@@ -35,3 +35,18 @@ h5,
 h6 {
     font-family: "OCR-A", monospace;
 }
+
+.links {
+    font-family: "OCR-B", monospace;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.links .link-item {
+    font-family: "OCR-B", monospace;
+    color: #ffffff;
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 15px;
+}
