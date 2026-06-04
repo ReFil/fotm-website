@@ -29,6 +29,7 @@ td {
 body {
     background-image: url("./assets/bg.gif");
     color: white;
+    background-color: black;
     font-family: "OCR-B", monospace;
     margin: 0 auto;
     text-align: center;
@@ -48,6 +49,30 @@ h6 {
     font-family: "OCR-A", monospace;
 }
 
+.people {
+    text-align: left;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr));
+    gap: 1rem;
+    padding-bottom: 50px;
+}
+
+.person h3 {
+    font-style: italic;
+    font-size: 20pt;
+    margin: 0;
+}
+
+.person {
+    background-color: var(--ourple-clear);
+    padding: 15px;
+    border: solid white 1px;
+}
+
+.person img {
+    image-rendering: pixelated;
+}
+
 .titlebar {
     margin: 20px;
     padding: 20px;
@@ -59,6 +84,7 @@ h6 {
 .content {
     background: var(--ourple-clear);
     margin: auto;
+    margin-bottom: 100px;
     padding: 10px 50px 10px 50px;
     min-width: 500px;
     max-width: 1000px;
@@ -79,4 +105,17 @@ h6 {
     font-size: 20px;
     display: inline-block;
     margin-right: 15px;
+}
+
+.badge-grid {
+    display: block;
+}
+
+.badge-grid a {
+    text-decoration: none;
+}
+
+.badge-grid img {
+    width: 88px;
+    height: 31px;
 }
