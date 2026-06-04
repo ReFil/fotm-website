@@ -112,3 +112,8 @@ h6 {
 .badge-grid a {
     text-decoration: none;
 }
+
+.badge-grid img {
+    width: 88px;
+    height: 31px;
+}
