@@ -29,6 +29,7 @@ td {
 body {
     background-image: url("./assets/bg.gif");
     color: white;
+    background-color: black;
     font-family: "OCR-B", monospace;
     margin: 0 auto;
     text-align: center;
