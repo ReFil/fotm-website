@@ -1,7 +1,6 @@
 use std::{
     io::{Read, Write},
     net::TcpListener,
-    num,
     string::String,
 };
 
@@ -35,7 +34,7 @@ fn main() {
     format_people(&elements, &mut rng, server);
     let socket = TcpListener::bind(format!("{}:8413", server).as_str()).unwrap();
     loop {
-        let (mut stream, addr) = socket.accept().unwrap();
+        let (mut stream, _) = socket.accept().unwrap();
         let mut idc = [0_u8; 1024];
         stream.read(&mut idc).unwrap();
         let content = format_people(&elements, &mut rng, server);
@@ -53,8 +52,9 @@ fn format_people(
     let mut available = (0..num_people).collect::<Vec<usize>>();
     available.shuffle(rng);
 
-    let mut out = String::from(
-        "<head><link rel=stylesheet href=\"http://127.0.0.1/style.css\"></head><div class=\"people\">\n",
+    let mut out = format!(
+        "<head><link rel=stylesheet href=\"http://{}/style.css\"></head><div class=\"people\">\n",
+        server_name
     );
     for person_index in available {
         let person = people.get(person_index).unwrap();

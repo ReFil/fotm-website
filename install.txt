@@ -1,0 +1,9 @@
+on line 24 of grid_random/main.rs, change server to be the hostname of the computer
+do the same for line 44 of index.html
+run the rust code in grid_random
+should be working!
+
+in my nginx config, i have
+location /people/ {
+    proxy_pass <ip address>:8413
+}

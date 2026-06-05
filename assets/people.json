@@ -34,6 +34,39 @@
     ]
   },
   {
+    "name": "Hannah",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "badges": []
+  },
+  {
+    "name": "Anna O",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "badges": [
+      {
+        "link": "https://github.com/anna-oake",
+        "asset": "http://$server/assets/88x31/github.gif"
+      },
+      {
+        "link": "https://anna.oa.ke",
+        "asset": "https://anna.oa.ke/assets/88x31.gif"
+      }
+    ]
+  },
+  {
+    "name": "Maeve O",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "badges": [
+      {
+        "link": "https://github.com/maeve-oake",
+        "asset": "http://$server/assets/88x31/github.gif"
+      },
+      {
+        "link": "https://maeve.oa.ke",
+        "asset": "https://les.bi/images/88x31_miaowing.png"
+      }
+    ]
+  },
+  {
     "name": "Natalie K-F",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
     "badges": [
@@ -63,7 +96,7 @@
     "badges": []
   },
   {
-    "name": "Lily S",
+    "name": "Kacper W",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
     "badges": []
   }
