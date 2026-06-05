@@ -1,0 +1,70 @@
+[
+  {
+    "name": "Willow H",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "badges": [
+      {
+        "link": "http://github.com/ReFil",
+        "asset": "http://$server/assets/88x31/github.gif"
+      },
+      {
+        "link": "http://willowherring.dev",
+        "asset": "http://$server/assets/88x31/website.png"
+      }
+    ]
+  },
+  {
+    "name": "Eden O-H",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "badges": [
+      {
+        "link": "http://github.com/EdenOttleyHodgson",
+        "asset": "http://$server/assets/88x31/github.gif"
+      }
+    ]
+  },
+  {
+    "name": "Eryn H-T",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "badges": [
+      {
+        "link": "http://github.com/ErynRev",
+        "asset": "http://$server/assets/88x31/github.gif"
+      }
+    ]
+  },
+  {
+    "name": "Natalie K-F",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "badges": [
+      {
+        "link": "http://github.com/michcode2",
+        "asset": "http://$server/assets/88x31/github.gif"
+      },
+      {
+        "link": "http://silly.michcode.space",
+        "asset": "http://$server/assets/88x31/website.png"
+      }
+    ]
+  },
+  {
+    "name": "Cait P-F",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "badges": []
+  },
+  {
+    "name": "Luke B",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "badges": []
+  },
+  {
+    "name": "Lily S",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "badges": []
+  },
+  {
+    "name": "Lily S",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "badges": []
+  }
+]

@@ -1,0 +1,9 @@
+[package]
+name = "grid_random"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rand = "0.10.1"
+reqwest = {version= "0.13.4", features = ["blocking"]}
+serde_json = "1.0.150"
