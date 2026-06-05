@@ -32,7 +32,7 @@ fn main() {
 
     let mut rng = rand::rng();
     format_people(&elements, &mut rng, server);
-    let socket = TcpListener::bind(format!("{}:8413", server).as_str()).unwrap();
+    let socket = TcpListener::bind("0.0.0.0:8413").unwrap();
     loop {
         let (mut stream, _) = socket.accept().unwrap();
         let mut idc = [0_u8; 1024];
