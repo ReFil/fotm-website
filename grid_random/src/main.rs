@@ -53,7 +53,7 @@ fn format_people(
     available.shuffle(rng);
 
     let mut out = format!(
-        "<head><link rel=stylesheet href=\"http://{}/style.css\"></head><div class=\"people\">\n",
+        "<head><link rel=stylesheet href=\"https://{}/style.css\"></head><div class=\"people\">\n",
         server_name
     );
     for person_index in available {
