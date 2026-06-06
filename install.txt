@@ -1,4 +1,4 @@
-on line 24 of grid_random/main.rs, change server to be the hostname of the computer
+at the start of main() in grid_random/main.rs, change server to be the hostname of the computer
 do the same for line 44 of index.html in the iframe
 make sure the iframe is set to something that looks like https://emf.michcode.space/people/
 run the rust code in grid_random

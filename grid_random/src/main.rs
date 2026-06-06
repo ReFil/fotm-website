@@ -19,8 +19,17 @@ macro_rules! PERSON_STRING {
     };
 }
 
+macro_rules! BADGE_STRING {
+    () => {
+        r#"<a target="_blank" href={}>
+        <img src = {}>
+        </a>
+"#
+    };
+}
+
 fn main() {
-    let server = "127.0.0.1";
+    let server = "192.168.0.106";
 
     let data = reqwest::blocking::get(format!("http://{}/assets/people.json", server).as_str())
         .unwrap()
@@ -53,7 +62,7 @@ fn format_people(
     available.shuffle(rng);
 
     let mut out = format!(
-        "<head><link rel=stylesheet href=\"https://{}/style.css\"></head><div class=\"people\">\n",
+        "<head><link rel=stylesheet href=\"http://{}/style.css\"></head><div class=\"people\">\n",
         server_name
     );
     for person_index in available {
@@ -62,13 +71,10 @@ fn format_people(
         let all_badges = person.get("badges").unwrap().as_array().unwrap();
         // TODO refactor to make this simpler
         for badge in all_badges {
-            badge_string.push_str("<a href=\"");
-            badge_string.push_str(badge.get("link").unwrap().as_str().unwrap());
-            badge_string.push_str("\">\n<img src = \"");
+            let link = badge.get("link").unwrap().as_str().unwrap();
             let asset_name = badge.get("asset").unwrap().as_str().unwrap();
             let expanded_asset_name = asset_name.replace("$server", server_name);
-            badge_string.push_str(expanded_asset_name.as_str());
-            badge_string.push_str("\">\n</a>");
+            badge_string.push_str(format!(BADGE_STRING!(), link, expanded_asset_name).as_str());
         }
         badge_string.push_str("</div>");
         let name = person.get("name").unwrap().as_str().unwrap();
