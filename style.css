@@ -12,7 +12,12 @@
     --ourple: #2f1945;
     --ourple-clear: #2f194596;
     --blue-passport: #090336ac;
-    --ourple-gradient: linear-gradient(90deg, var(--blue-passport) 0%, var(--ourple) 50%, var(--blue-passport) 100%);
+    --ourple-gradient: linear-gradient(
+        90deg,
+        var(--blue-passport) 0%,
+        var(--ourple) 50%,
+        var(--blue-passport) 100%
+    );
 }
 
 table {
@@ -55,6 +60,7 @@ h6 {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr));
     gap: 1rem;
     padding-bottom: 50px;
+    background-color: var(--ourple-clear);
 }
 
 .person h3 {
