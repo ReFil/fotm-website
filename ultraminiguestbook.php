@@ -48,7 +48,7 @@ $text=str_replace(array("\r","\t"),"", $text); $text=str_replace("\n", "<br>", $
 $text=substr($text,0,$maxlength);
 $data=fopen("ultraminiguestbook.txt","a"); $result="";
 if($email) {for($i=0;$i<strlen($email);$i++){$result.='&#'.ord(substr($email,$i,1)).';';} $name="<a href='mailto:$result'>$name</a>";}
-fputs($data,"$text<br><i>Name: $name - Date: ".date("d/m/Y")."</i>\n");
+fputs($data,"$text<br><i>Name: $name - Time/Date: ".date("H:i:s - d/m/Y")."</i>\n");
 fclose($data);
 if(!$email) $email=$emailnotify;
 if($emailnotify) mail($emailnotify, $objemail, $text."\n\n$name\n$email", "From: $email \nReply-To: $email");
