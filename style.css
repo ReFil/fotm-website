@@ -65,6 +65,8 @@ h6 {
 
 .person {
     background-color: var(--ourple-clear);
+    display: flex;
+    flex-direction: column;
     padding: 15px;
     border: solid white 1px;
 }
@@ -79,6 +81,22 @@ h6 {
     background: var(--ourple-gradient);
 
     border-radius: 10px;
+}
+
+.persontitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.holyshitapronounsbox {
+    margin-left: auto;
+    text-align: right;
+}
+
+.holyshitapronounsbox h4 {
+    font-family: "OCR-B", monospace;
+    margin: 0;
 }
 
 .content {
@@ -109,6 +127,7 @@ h6 {
 
 .badge-grid {
     display: block;
+    margin-top: auto;
 }
 
 .badge-grid a {
