@@ -112,10 +112,15 @@ h6 {
 }
 
 .badge-grid a {
+    display: inline-block;
+    width: 88px;
+    height: 31px;
+    line-height: 0;
     text-decoration: none;
 }
 
 .badge-grid img {
+    display: block;
     width: 88px;
     height: 31px;
 }
