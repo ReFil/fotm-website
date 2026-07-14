@@ -81,6 +81,22 @@ h6 {
     border-radius: 10px;
 }
 
+.persontitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.holyshitapronounsbox {
+    margin-left: auto;
+    text-align: right;
+}
+
+.holyshitapronounsbox h4 {
+    font-family: "OCR-B", monospace;
+    margin: 0;
+}
+
 .content {
     background: var(--ourple-clear);
     margin: auto;
