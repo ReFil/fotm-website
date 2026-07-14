@@ -65,6 +65,8 @@ h6 {
 
 .person {
     background-color: var(--ourple-clear);
+    display: flex;
+    flex-direction: column;
     padding: 15px;
     border: solid white 1px;
 }
@@ -125,6 +127,7 @@ h6 {
 
 .badge-grid {
     display: block;
+    margin-top: auto;
 }
 
 .badge-grid a {
