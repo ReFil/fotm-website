@@ -83,20 +83,22 @@ h6 {
     border-radius: 10px;
 }
 
-.persontitle {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.holyshitapronounsbox {
-    margin-left: auto;
-    text-align: right;
-}
-
 .holyshitapronounsbox h4 {
     font-family: "OCR-B", monospace;
     margin: 0;
+}
+
+@media screen and (min-width: 370px) {
+    .persontitle {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .holyshitapronounsbox {
+        margin-left: auto;
+        text-align: right;
+    }
 }
 
 .content {
@@ -104,7 +106,6 @@ h6 {
     margin: auto;
     margin-bottom: 100px;
     padding: 10px 50px 10px 50px;
-    min-width: 500px;
     max-width: 1000px;
     height: fit-content;
     border-radius: 10px;
@@ -149,12 +150,17 @@ div.hannah {
     flex-direction: column;
 }
 
-div.hannah p {
-    width: 75%;
-}
-
 div.hannah .bingbong {
     width: 100px;
-    margin-top: -45px;
-    align-self: last baseline;
+}
+
+@media screen and (min-width: 370px) {
+    div.hannah p {
+        width: 75%;
+    }
+
+    div.hannah .bingbong {
+        margin-top: -45px;
+        align-self: last baseline;
+    }
 }
