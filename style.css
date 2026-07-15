@@ -143,3 +143,18 @@ h6 {
     width: 88px;
     height: 31px;
 }
+
+div.hannah {
+    display: flex;
+    flex-direction: column;
+}
+
+div.hannah p {
+    width: 75%;
+}
+
+div.hannah .bingbong {
+    width: 100px;
+    margin-top: -45px;
+    align-self: last baseline;
+}
