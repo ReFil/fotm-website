@@ -7,7 +7,7 @@
 # -------------------------
 
 # Admin password  (insert in the verification code field)
-$password="S3KGKagb";
+$password="$2a$12$.JoPe9nk7mz2U13YgO1VGOka7BH0KwL5gAg/Mi9Y5Gc8laQEmBzya";
 # Notify message to your email  ($emailnotify=""; for not having notification)
 $emailnotify="your@email.com"; $objemail="Message added in your Guestbook!";
 # Invitation text to put a first message
@@ -33,10 +33,10 @@ if(isset($_COOKIE["turing_string"])) $turingvar=$_COOKIE["turing_string"];
 if(isset($_COOKIE["password"])) $passwordvar=$_COOKIE["password"];
 
 if (isset($logout)){setcookie("password"); $passwordvar="";}
-if (isset($guess)) { if($guess==$password) {setcookie("password",$guess); $passwordvar=$password; $guestbook="";} }
+if (isset($guess)) { if(password_verify($guess, $password)) {setcookie("password",$guess); $passwordvar=$password; $guestbook="";} }
 
 if(isset($guestbook)) {setcookie ("turing_string");
-if ($guess==$password) {echo("<script>alert(\"Welcome to edit mode!\");location.href='ultraminiguestbook.php';</script>"); exit;}
+if (password_verify($guess, $password)) {echo("<script>alert(\"Welcome to edit mode!\");location.href='ultraminiguestbook.php';</script>"); exit;}
 if (($turingvar!=$guess)or(!$guess)or(!$turingvar)) {echo("<script>alert(\"$turingerror\");location.href='ultraminiguestbook.php';</script>"); exit;}
 
 if((!$text)&&(!$name)) {echo("<script>alert(\"$errorname\"); history.back();</script>"); exit;}
