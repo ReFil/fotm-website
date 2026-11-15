@@ -27,7 +27,7 @@ if($atEvent) {
     $order = "present DESC, random()";
 }
 else {
-    $order = "random()"
+    $order = "random()";
 }
 
 $stmt = $pdo->query("SELECT id, moonname, pronouns, dect, decription, badge1, badge2, badge3, present FROM $schema.moonmembers ORDER BY $order");
@@ -87,7 +87,7 @@ $moonmembers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
 
-                <p class="p-role"><?php if ($row["decription"] != ''): ?><?= $row["decription"])?><?php endif; ?></p>
+                <p class="p-role"><?php if ($row["decription"] != ''): ?><?= $row["decription"]?><?php endif; ?></p>
 
                 <div class="badge-grid">
                     <?php if ($row["badge1"] != ''): ?><?= $row["badge1"] ?><?php endif; ?>
