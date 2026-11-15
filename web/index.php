@@ -7,8 +7,8 @@ $dbName = getenv('DB_NAME') ?: 'fotm';
 $dbUser = getenv('DB_USER') ?: 'fotm';
 $dbPass = getenv('DB_PASSWORD') ?: '';
 
-$showDect = ((getenv('SHOW_DECT') ?: '0') == '1') ? TRUE : FALSE;
 $atEvent = ((getenv('AT_EVENT') ?: '0') == '1') ? TRUE : FALSE;
+$showDect = (((getenv('SHOW_DECT') ?: '0') == '1') && $atEvent) ? TRUE : FALSE;
 $location = getenv('LOCATION') ?: 'somewhere';
 $phoneNumber = getenv('NUMBER') ?: 'whoops';
 
@@ -23,8 +23,14 @@ try {
 $schema = 'fotm';
 $message = '';
 $authError = '';
+if($atEvent) {
+    $order = "present DESC, random()";
+}
+else {
+    $order = "random()"
+}
 
-$stmt = $pdo->query("SELECT id, moonname, pronouns, dect, decription, badge1, badge2, badge3, present FROM $schema.moonmembers ORDER BY present DESC, random()");
+$stmt = $pdo->query("SELECT id, moonname, pronouns, dect, decription, badge1, badge2, badge3, present FROM $schema.moonmembers ORDER BY $order");
 $moonmembers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -81,7 +87,7 @@ $moonmembers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
 
-                <p class="p-role"><?php if ($row["decription"] != ''): ?><?= htmlspecialchars($row["decription"]) ?><?php endif; ?></p>
+                <p class="p-role"><?php if ($row["decription"] != ''): ?><?= $row["decription"])?><?php endif; ?></p>
 
                 <div class="badge-grid">
                     <?php if ($row["badge1"] != ''): ?><?= $row["badge1"] ?><?php endif; ?>
