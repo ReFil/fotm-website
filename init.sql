@@ -3,7 +3,7 @@ SET search_path TO fotm;
 
 CREATE TABLE IF NOT EXISTS moonmembers (
     id BIGSERIAL PRIMARY KEY,
-    name VARCHAR(64) NOT NULL,
+    moonname VARCHAR(64) NOT NULL,
     pronouns VARCHAR(64) DEFAULT '',
     dect VARCHAR(64) DEFAULT '',
     decription VARCHAR(256) DEFAULT '',
