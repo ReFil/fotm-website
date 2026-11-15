@@ -32,8 +32,6 @@ services:
       PGADMIN_CONFIG_SERVER_MODE: 'False'
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
-    ports:
-      - '${PGADMIN_PORT}:80'
     volumes:
       - /mnt/Main/apps/web2-pgadmin:/var/lib/pgadmin
       - /mnt/Main/apps/web2-config/pgadmin_servers.json:/pgadmin4/servers.json:ro
@@ -56,8 +54,6 @@ services:
       SHOW_DECT: ${SHOW_DECT}
       LOCATION: ${LOCATION}
       NUMBER: ${NUMBER}
-    ports:
-      - '${WEB_PORT}:80'
     volumes:
       - /mnt/Main/apps/web2-config/web/:/app/
     depends_on:
