@@ -81,7 +81,7 @@ $moonmembers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
 
-                <p class="p-role"><?php if ($row["description"] != ''): ?><?= htmlspecialchars($row["description"]) ?><?php endif; ?></p>
+                <p class="p-role"><?php if ($row["decription"] != ''): ?><?= htmlspecialchars($row["decription"]) ?><?php endif; ?></p>
 
                 <div class="badge-grid">
                     <?php if ($row["badge1"] != ''): ?><?= $row["badge1"] ?><?php endif; ?>
