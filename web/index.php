@@ -1,3 +1,34 @@
+<?php
+session_start();
+
+$dbHost = getenv('DB_HOST') ?: 'postgres';
+$dbPort = getenv('DB_PORT') ?: '5432';
+$dbName = getenv('DB_NAME') ?: 'fotm';
+$dbUser = getenv('DB_USER') ?: 'fotm';
+$dbPass = getenv('DB_PASSWORD') ?: '';
+
+$showDect = ((getenv('SHOW_DECT') ?: '0') == '1') ? TRUE : FALSE;
+$atEvent = ((getenv('AT_EVENT') ?: '0') == '1') ? TRUE : FALSE;
+$location = getenv('LOCATION') ?: 'somewhere';
+$phoneNumber = getenv('NUMBER') ?: 'whoops';
+
+$dsn = "pgsql:host=$dbHost;port=$dbPort;dbname=$dbName";
+try {
+    $pdo = new PDO($dsn, $dbUser, $dbPass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die('Database connection failed: ' . htmlspecialchars($e->getMessage()));
+}
+
+$schema = 'fotm';
+$message = '';
+$authError = '';
+
+$stmt = $pdo->query("SELECT id, moonname, pronouns, dect, decription, badge1, badge2, badge3, present FROM $schema.moonmembers ORDER BY present DESC, random()");
+$subscribers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+
 <!DOCTYPE HTML>
 <html lang="en">
 
@@ -29,7 +60,14 @@
         <p>bunch of people who are vaguely tied to southampton from like 2020 onwards and all the people we picked up along the way.</p>
 
         <h2>how do I get in touch with you?</h2>
-        <p>find our assembly at $location, or dial into to fonesofthemoon at 66667 (MOONS)</p>
+        <p><?php 
+            if($atEvent) {
+                "find our assembly at $location, or dial into to fonesofthemoon at $phoneNumber"
+            }
+            else {
+                "you can probably find our individual members flitting about the interwebs, or come along to our next event and say hello"
+            } ?>
+        </p>
 
         <div class="people">
             <article class="person h-card">
@@ -47,185 +85,15 @@
                 </div>
             </article>
 
-            <article class="person h-card">
-                <div class="persontitle">
-                    <h3 class="p-name">Eden O-H</h3>
-                    <div class="holyshitapronounsbox">
-                        <h4></h4>
-                    </div>
-                </div>
-                <marquee scrollamount="20" styl="margin: auto">
-                    <img src="./assets/Baby_Melman.webp">
-                </marquee>
-                <div class="badge-grid">
-                    <a class="u-url" href="https://github.com/EdenOttleyHodgson"> <img src="./assets/88x31/github.gif"> </a>
-                </div>
-            </article>
-
-            <article class="person h-card">
-                <div class="persontitle">
-                    <h3 class="p-name">Eryn H-T</h3>
-                    <div class="holyshitapronounsbox">
-                        <h4 class="p-gender-identity">she/her</h4>
-                    </div>
-                </div>
-                <p>Grelp</p>
-                <div class="badge-grid">
-                    <a class="u-url" href="https://github.com/ErynRev"> <img src="./assets/88x31/github.gif"> </a>
-                </div>
-            </article>
-
-            <article class="person h-card">
-                <div class="persontitle">
-                    <h3 class="p-name">Hannah T</h3>
-                    <div class="holyshitapronounsbox">
-                        <h4 class="p-gender-identity">she/her</h4>
-                       <!-- <h4>DECT: <span class="p-tel">UHHH</span></h4> -->
-                    </div>
-                </div>
-                <div class="hannah">
-                    <p class="p-role">uh...uhhhhh... *squishes again* I'm not comfortable answering that...</p>
-                    <img src="./assets/bingbong.png" class="bingbong" alt="bing bong from the hit game 'peak'">
-                </div>
-                <div class="badge-grid">
-
-                </div>
-            </article>
-
-            <article class="person h-card">
-                <div class="persontitle">
-                    <h3 class="p-name">Anna O</h3>
-                    <div class="holyshitapronounsbox">
-                        <h4 class="p-gender-identity">she/her</h4>
-                       <!-- <h4>DECT: <span class="p-tel">ANNA</span></h4> -->
-                    </div>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                <div class="badge-grid">
-                    <a class="u-url" href="https://github.com/anna-oake"> <img src="./assets/88x31/github.gif"> </a>
-                    <a class="u-url" href="https://anna.oa.ke"> <img src="https://anna.oa.ke/assets/88x31.gif"> </a>
-                </div>
-            </article>
-
-            <article class="person h-card">
-                <div class="persontitle">
-                    <h3 class="p-name">Maeve O</h3>
-                    <div class="holyshitapronounsbox">
-                        <h4 class="p-gender-identity">she/her</h4>
-                       <!-- <h4>DECT: <span class="p-tel">MAEVE</span></h4> -->
-                    </div>
-                </div>
-                <p class="p-role">miaows at u</p>
-                <div class="badge-grid">
-                    <a class="u-url" href="https://github.com/maeve-oake"> <img src="./assets/88x31/github.gif"> </a>
-                    <a class="u-url" href="https://maeve.oa.ke"> <img src="https://les.bi/images/88x31_miaowing.png"> </a>
-                </div>
-            </article>
-
-            <article class="person h-card">
-                <div class="persontitle">
-                    <h3 class="p-name">Natalie K-F</h3>
-                    <div class="holyshitapronounsbox">
-                        <h4 class="p-gender-identity">sheher</h4>
-                    </div>
-                </div>
-                <p class="p-role">days from graduating from aerospace student to unemployed. love factorio, love doodads, love my partner. simple as.</p>
-                <div class="badge-grid">
-                    <a class="u-url" href="https://github.com/michcode2"> <img src="./assets/88x31/github.gif"> </a>
-                    <a class="u-url" href="https:///silly.michcode.space"> <img src="./assets/88x31/website.png"> </a>
-                </div>
-            </article>
-
-            <article class="person h-card">
-                <div class="persontitle">
-                    <h3 class="p-name">Cait P-F</h3>
-                    <div class="holyshitapronounsbox">
-                        <h4 class="p-gender-identity">they/she</h4>
-                       <!-- <h4>DECT: <span class="p-tel">CAIT</span></h4> -->
-                    </div>
-                </div>
-                <p class="p-role">nee-naw dweller; soon-to-be-paramedic; occasional Computer Enjoyer; frequent Computer Loather. technology is power, and we're all dangerous. CAIT (2248) on the EMF phones, or message me on fedi</p>
-                <div class="badge-grid">
-                    <a class="u-url" href="https://cpf.sh"> <img src="https://88x31.cpf.sh"> </a>
-                    <a class="u-url" href="https://fedi.cpf.sh"> <img src="./assets/88x31/fedi.gif"> </a>
-                    <a class="u-url" href="https://github.com/mashedkeyboard"> <img src="./assets/88x31/github.gif"> </a>
-                </div>
-            </article>
-
-            <article class="person h-card">
-                <div class="persontitle">
-                    <h3 class="p-name">Luke B</h3>
-                    <div class="holyshitapronounsbox">
-                        <h4 class="p-gender-identity">he/him</h4>
-                       <!-- <h4>DECT: <span class="p-tel">BOTC</span></h4> -->
-                    </div>
-                </div>
-		        <p class="p-role">Luke is a cybersecurity graduate working in Glasgow. He enjoys event planning, climbing, cooking, Blood on the Clocktower, walks, rum and the Dishnored series. Call him on the telephone!</p>
-                <div class="badge-grid">
-
-                </div>
-            </article>
-
-            <article class="person h-card">
-                <div class="persontitle">
-                    <h3 class="p-name">Lily S</h3>
-                    <div class="holyshitapronounsbox">
-                        <h4 class="p-gender-identity">she/her</h4>
-                    </div>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                <div class="badge-grid">
-
-                </div>
-            </article>
-
-            <article class="person h-card">
-                <div class="persontitle">
-                    <h3 class="p-name">Kacper W</h3>
-                    <div class="holyshitapronounsbox">
-                        <h4 class="p-gender-identity">he/him</h4>
-                       <!-- <h4>DECT: <span class="p-tel">7766</span></h4> -->
-                    </div>
-                </div>
-                <p class="p-role">An adventurer who has been everywhere from Morocco to CERN to China, often in entirely unsuitable home maintained vehicles. A fan of board games and Warhammer and a dab hand at DIYing everything from plumbing to boat repair.</p>
-                <div class="badge-grid">
-
-                </div>
-            </article>
-
-            <article class="person h-card">
-                <div class="persontitle">
-                    <h3 class="p-name">Jess N</h3>
-                    <div class="holyshitapronounsbox">
-                        <h4 class="p-gender-identity">she/her</h4>
-                       <!-- <h4>DECT: <span class="p-tel">ARSE</span></h4> -->
-                    </div>
-                </div>
-                <p class="p-role">Theoretically a computer science PhD student with an interest in logic and games. Engineeringly illiterate :(</p>
-                <div class="badge-grid">
-                    <a class="u-url" href="https://jessicalnewman.com"> <img src="./assets/88x31/website.png"> </a>
-                </div>
-            </article>
-
-            <article class="person h-card">
-                <div class="persontitle">
-                    <h3 class="p-name">Phoenix</h3>
-                    <div class="holyshitapronounsbox">
-                        <h4 class="p-gender-identity">they/them</h4>
-                    </div>
-                </div>
-                <p>Experimental Physics PhD student (read: tamer of uncooperative equipment), with a long list of personal projects and silly contraptions they hope to get done one day</p>
-                <div class="badge-grid">
-
-                </div>
-            </article>
         </div>
 
         <h2>what can i access on here?</h2>
         <p>Our minecraft server is available at friendsofthemoon.space:25565. It is a vanilla 26.2 server.</p>
         <p>Our factorio server is available at friendsofthemoon.space:34197 (RCON port 27015). Please note you need the DLC</p>
         <p>our fileserver is available at <a href="https://files.friendsofthemoon.space">files.friendofthemoon.space</a>. feel free to upload your own curiosities to the upload folder, and we shall review and move them periodically. please do not upload illegal or explicit material ty</p>
-        <p>We run our own mini-poc on site. Feel free to dial into the system at 66667 (MOONS) if you want to get in touch, more fun things may be forthcoming, watch this space</p>
+        <p><?php 
+            if ($atEvent) {
+                "We run our own mini-poc on site. Feel free to dial into the system at $phoneNumber if you want to get in touch, more fun things may be forthcoming, watch this space"} ?></p>
 
         <h2>Guestbook</h2>
         <div border="none">
