@@ -11,4 +11,5 @@ CREATE TABLE IF NOT EXISTS moonmembers (
     badge2 VARCHAR(128) DEFAULT '',
     badge3 VARCHAR(128) DEFAULT '',
     present INT DEFAULT 0,
+    CONSTRAINT moonname_idx UNIQUE (moonname)
 );
