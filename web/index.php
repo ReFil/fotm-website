@@ -25,7 +25,7 @@ $message = '';
 $authError = '';
 
 $stmt = $pdo->query("SELECT id, moonname, pronouns, dect, decription, badge1, badge2, badge3, present FROM $schema.moonmembers ORDER BY present DESC, random()");
-$subscribers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$moonmembers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -70,26 +70,38 @@ $subscribers = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </p>
 
         <div class="people">
+
+            <?php foreach ($moonmembers as $row): ?>
             <article class="person h-card">
                 <div class="persontitle">
-                    <h3 class="p-name">Willow H</h3>
+                    <h3 class="p-name"><?= htmlspecialchars($row["moonname"])?></h3>
                     <div class="holyshitapronounsbox">
-                        <h4 class="p-gender-identity">it/she</h4>
-                       <!--<h4>DECT: <span class="p-tel">PUPY</span></h4>--> 
+                        <?php if ($row["pronouns"] != ''): ?><h4 class="p-gender-identity"><?= htmlspecialchars($row["pronouns"]) ?></h4><?php endif; ?>
+                        <?php if (($row["dect"] != '') && $showDect && ($row["present"] == '1')): ?><h4>DECT: <span class="p-tel"><?= htmlspecialchars($row["dect"]) ?></span></h4><?php endif; ?>
                     </div>
                 </div>
-                <p class="p-role">An engineer and builder all manner of doohickeys and contraptions, who gets up to all sorts of (mis)adventures with them. Often caught with a soldering iron, screwdriver or ratchet in its hands.</p>
+
+                <p class="p-role"><?php if ($row["description"] != ''): ?><?= htmlspecialchars($row["description"]) ?><?php endif; ?></p>
+
                 <div class="badge-grid">
-                    <a class="u-url" href="https://github.com/ReFil"> <img src="./assets/88x31/github.gif"> </a>
-                    <a class="u-url" href="https://willowherring.dev"> <img src="https://willowherring.dev/images/button-88x31.png"> </a>
-                </div>
+                    <?php if ($row["badge1"] != ''): ?><?= $row["badge1"] ?><?php endif; ?>
+                    <?php if ($row["badge2"] != ''): ?><?= $row["badge2"] ?><?php endif; ?>
+                    <?php if ($row["badge3"] != ''): ?><?= $row["badge3"] ?><?php endif; ?>
+
+
+                    </div>
             </article>
+            <?php endforeach; ?>
 
         </div>
 
         <h2>what can i access on here?</h2>
-        <p>Our minecraft server is available at friendsofthemoon.space:25565. It is a vanilla 26.2 server.</p>
-        <p>Our factorio server is available at friendsofthemoon.space:34197 (RCON port 27015). Please note you need the DLC</p>
+        <?php 
+            if ($atEvent): ?>
+            <p>Our minecraft server is available at friendsofthemoon.space:25565. It is a vanilla 26.2 server.</p>
+            <p>Our factorio server is available at friendsofthemoon.space:34197 (RCON port 27015). Please note you need the DLC</p>
+        <?php endif; ?>
+
         <p>our fileserver is available at <a href="https://files.friendsofthemoon.space">files.friendofthemoon.space</a>. feel free to upload your own curiosities to the upload folder, and we shall review and move them periodically. please do not upload illegal or explicit material ty</p>
         <p><?php 
             if ($atEvent): ?>
