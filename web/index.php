@@ -68,7 +68,7 @@ $moonmembers = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h2>how do I get in touch with you?</h2>
         <p><?php 
             if($atEvent) { ?>
-                find our assembly at <?= $location ?>, or dial into to fonesofthemoon at <?= $phoneNumber ?>
+                find our assembly at <?= htmlspecialchars($location) ?>, or dial into to fonesofthemoon at <?= htmlspecialchars($phoneNumber) ?>
             <?php }
             else { ?>
                 you can probably find our individual members flitting about the interwebs, or come along to our next event and say hello
