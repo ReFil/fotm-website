@@ -52,6 +52,10 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       WEB_ADMIN_HASH: ${WEB_ADMIN_HASH}
+      AT_EVENT: ${AT_EVENT}
+      SHOW_DECT: ${SHOW_DECT}
+      LOCATION: ${LOCATION}
+      NUMBER: ${NUMBER}
     ports:
       - '${WEB_PORT}:80'
     volumes:

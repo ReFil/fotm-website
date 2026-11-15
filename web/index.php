@@ -62,10 +62,10 @@ $subscribers = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h2>how do I get in touch with you?</h2>
         <p><?php 
             if($atEvent) {
-                "find our assembly at $location, or dial into to fonesofthemoon at $phoneNumber"
+                "find our assembly at $location, or dial into to fonesofthemoon at $phoneNumber";
             }
             else {
-                "you can probably find our individual members flitting about the interwebs, or come along to our next event and say hello"
+                "you can probably find our individual members flitting about the interwebs, or come along to our next event and say hello";
             } ?>
         </p>
 
@@ -93,7 +93,8 @@ $subscribers = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p>our fileserver is available at <a href="https://files.friendsofthemoon.space">files.friendofthemoon.space</a>. feel free to upload your own curiosities to the upload folder, and we shall review and move them periodically. please do not upload illegal or explicit material ty</p>
         <p><?php 
             if ($atEvent) {
-                "We run our own mini-poc on site. Feel free to dial into the system at $phoneNumber if you want to get in touch, more fun things may be forthcoming, watch this space"} ?></p>
+                "We run our own mini-poc on site. Feel free to dial into the system at $phoneNumber if you want to get in touch, more fun things may be forthcoming, watch this space";
+                } ?></p>
 
         <h2>Guestbook</h2>
         <div border="none">
