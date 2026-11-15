@@ -1,0 +1,59 @@
+
+services:
+  postgres:
+    image: postgres:${POSTGRES_VERSION}
+    container_name: web2-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER}
+    volumes:
+      - /mnt/Main/apps/web2-db:/var/lib/postgresql/data
+      - /mnt/Main/apps/web2-config/init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: |
+      sh -c '
+        exec docker-entrypoint.sh postgres
+      '
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U ${DB_USER} -d ${DB_NAME}
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4:${PGADMIN_VERSION}
+    container_name: web2-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - '${PGADMIN_PORT}:80'
+    volumes:
+      - /mnt/Main/apps/web2-pgadmin:/var/lib/pgadmin
+      - /mnt/Main/apps/web2-config/pgadmin_servers.json:/pgadmin4/servers.json:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+  
+  web:
+    image: webdevops/php-nginx:${WEB_PHP_VERSION}
+    container_name: fotm-web
+    restart: unless-stopped
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      WEB_ADMIN_HASH: ${WEB_ADMIN_HASH}
+    ports:
+      - '${WEB_PORT}:80'
+    volumes:
+      - /mnt/Main/apps/web2-config/web/:/app/
+    depends_on:
+      postgres:
+        condition: service_healthy
